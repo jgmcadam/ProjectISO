@@ -66,6 +66,8 @@ int main()
 		window.display();
 	}
 
+	delete inputSystem;
+
 	return 0;
 }
 
