@@ -5,11 +5,11 @@
 
 int main()
 {
-	// TODO: Create a window utilising the graphics settings system to load previous settings 
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-
 	// Create All the core systems 
 	Input* inputSystem = new Input();
+
+	// TODO: Create a window utilising the graphics settings system to load previous settings 
+	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
 
 	while (window.isOpen())
 	{
@@ -39,8 +39,10 @@ int main()
 			case sf::Event::MouseMoved:
 				break;
 			case sf::Event::MouseButtonPressed:
+				inputSystem->SetMouseButtonDown(event.mouseButton.button);
 				break;
 			case sf::Event::MouseButtonReleased:
+				inputSystem->SetMouseButtonUp(event.mouseButton.button);
 				break;
 			case sf::Event::MouseWheelScrolled:
 				break;
@@ -55,15 +57,14 @@ int main()
 			}
 		}
 
-		char letterTyped;
-		if (Input::TryGetTypedASCIICharacter(&letterTyped))
+		if (Input::GetMouseButtonDown(sf::Mouse::Button::Right))
 		{
-			std::cout << letterTyped;
+			std::cout << "Right" << std::endl;
 		}
 
-		if (Input::GetKeyDown(sf::Keyboard::Enter))
+		if (Input::GetMouseButtonDown(sf::Mouse::Button::Left))
 		{
-			std::cout << std::endl;
+			std::cout << "Left" << std::endl;
 		}
 
 		inputSystem->EndInputFrame();

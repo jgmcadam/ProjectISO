@@ -34,6 +34,26 @@ void Input::SetKeyUp(sf::Keyboard::Key keyCode)
 	m_keyStates[keyCode] = false;
 }
 
+void Input::SetMouseButtonDown(sf::Mouse::Button mouseButton)
+{
+	if (m_mouseStates[mouseButton] == false)
+	{
+		m_mousePressedStates[mouseButton] = true;
+	}
+
+	m_mouseStates[mouseButton] = true;
+}
+
+void Input::SetMouseButtonUp(sf::Mouse::Button mouseButton)
+{
+	if (m_mouseStates[mouseButton] == true)
+	{
+		m_mousePressedStates[mouseButton] = false;
+	}
+
+	m_mouseStates[mouseButton] = false;
+}
+
 void Input::SetCharEntered(sf::Uint32 character)
 {
 	if (character < 128)
@@ -54,7 +74,22 @@ bool Input::GetKeyDown(sf::Keyboard::Key keyCode)
 
 bool Input::GetKey(sf::Keyboard::Key keyCode)
 {
-	return  m_instance->m_keyStates[keyCode];
+	return m_instance->m_keyStates[keyCode];
+}
+
+bool Input::GetMouseButtonUp(sf::Mouse::Button mouseButton)
+{
+	return m_instance->m_mouseReleasedStates[mouseButton];
+}
+
+bool Input::GetMouseButtonDown(sf::Mouse::Button mouseButton)
+{
+	return m_instance->m_mousePressedStates[mouseButton];
+}
+
+bool Input::GetMouseButton(sf::Mouse::Button mouseButton)
+{
+	return m_instance->m_mouseStates[mouseButton];
 }
 
 bool Input::TryGetTypedASCIICharacter(char* character)
@@ -68,7 +103,6 @@ bool Input::TryGetTypedASCIICharacter(char* character)
 	return true;
 }
 
-
 void Input::EndInputFrame()
 {
 	for (int i = 0; i < sf::Keyboard::KeyCount; i++)
@@ -79,6 +113,16 @@ void Input::EndInputFrame()
 	for (int i = 0; i < sf::Keyboard::KeyCount; i++)
 	{
 		m_keyPressedStates[i] = false;
+	}
+
+	for (int i = 0; i < sf::Mouse::Button::ButtonCount; i++)
+	{
+		m_mouseReleasedStates[i] = false;
+	}
+
+	for (int i = 0; i < sf::Mouse::Button::ButtonCount; i++)
+	{
+		m_mousePressedStates[i] = false;
 	}
 
 	m_characterBuffer = _NOCHAR;
