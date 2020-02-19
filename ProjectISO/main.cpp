@@ -37,6 +37,7 @@ int main()
 			case sf::Event::MouseLeft:
 				break;
 			case sf::Event::MouseMoved:
+				inputSystem->SetMousePosition(event.mouseMove.x, event.mouseMove.y);
 				break;
 			case sf::Event::MouseButtonPressed:
 				inputSystem->SetMouseButtonDown(event.mouseButton.button);
@@ -57,15 +58,10 @@ int main()
 			}
 		}
 
-		if (Input::GetMouseButtonDown(sf::Mouse::Button::Right))
-		{
-			std::cout << "Right" << std::endl;
-		}
-
-		if (Input::GetMouseButtonDown(sf::Mouse::Button::Left))
-		{
-			std::cout << "Left" << std::endl;
-		}
+		auto mouse = Input::GetMousePosition();
+		
+		std::cout << "x " << mouse.x << "y " << mouse.y << std::endl;
+		
 
 		inputSystem->EndInputFrame();
 

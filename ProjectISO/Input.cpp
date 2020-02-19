@@ -62,6 +62,12 @@ void Input::SetCharEntered(sf::Uint32 character)
 	}
 }
 
+void Input::SetMousePosition(int x, int y)
+{
+	m_mousePosition.x = x;
+	m_mousePosition.y = y;
+}
+
 bool Input::GetKeyUp(sf::Keyboard::Key keyCode)
 {
 	return m_instance->m_keyReleasedStates[keyCode];
@@ -101,6 +107,11 @@ bool Input::TryGetTypedASCIICharacter(char* character)
 
 	(*character) = m_instance->m_characterBuffer;
 	return true;
+}
+
+sf::Vector2i Input::GetMousePosition()
+{
+	return m_instance->m_mousePosition;
 }
 
 void Input::EndInputFrame()
