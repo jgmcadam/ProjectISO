@@ -1,9 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Input.h"
 
-#include <iostream>
-#include <cstdint>
-
 int main()
 {
 	// Create All the core systems 
@@ -61,18 +58,6 @@ int main()
 				break;
 				// Note: Do nothing this event is not handled
 			}
-		}
-
-		auto mouse = Input::GetVerticalScrollWheelDelta();
-		
-		if (mouse > FLT_EPSILON)
-		{
-			std::cout << "scroll " << mouse << std::endl;
-		}
-
-		if (mouse < -FLT_EPSILON)
-		{
-			std::cout << "scroll " << mouse << std::endl;
 		}
 		
 		inputSystem->EndInputFrame();
