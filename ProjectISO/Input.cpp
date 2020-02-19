@@ -1,5 +1,7 @@
 #include "Input.h"
 
+#define _NOCHAR -1
+
 Input* Input::m_instance = nullptr;
 
 Input::Input()
@@ -32,6 +34,14 @@ void Input::SetKeyUp(sf::Keyboard::Key keyCode)
 	m_keyStates[keyCode] = false;
 }
 
+void Input::SetCharEntered(sf::Uint32 character)
+{
+	if (character < 128)
+	{
+		m_characterBuffer = static_cast<char>(character);
+	}
+}
+
 bool Input::GetKeyUp(sf::Keyboard::Key keyCode)
 {
 	return m_instance->m_keyReleasedStates[keyCode];
@@ -45,7 +55,19 @@ bool Input::GetKeyDown(sf::Keyboard::Key keyCode)
 bool Input::GetKey(sf::Keyboard::Key keyCode)
 {
 	return  m_instance->m_keyStates[keyCode];
-};
+}
+
+bool Input::TryGetTypedASCIICharacter(char* character)
+{
+	if (m_instance->m_characterBuffer == _NOCHAR)
+	{
+		return false;
+	}
+
+	(*character) = m_instance->m_characterBuffer;
+	return true;
+}
+
 
 void Input::EndInputFrame()
 {
@@ -58,4 +80,6 @@ void Input::EndInputFrame()
 	{
 		m_keyPressedStates[i] = false;
 	}
+
+	m_characterBuffer = _NOCHAR;
 }

@@ -45,6 +45,7 @@ int main()
 			case sf::Event::MouseWheelScrolled:
 				break;
 			case sf::Event::TextEntered:
+				inputSystem->SetCharEntered(event.text.unicode);
 				break;
 			case sf::Event::Resized:
 				break;
@@ -54,19 +55,15 @@ int main()
 			}
 		}
 
-		if (Input::GetKey(sf::Keyboard::Space))
+		char letterTyped;
+		if (Input::TryGetTypedASCIICharacter(&letterTyped))
 		{
-			// std::cout << "Space Pressed" << std::endl;
+			std::cout << letterTyped;
 		}
 
-		if (Input::GetKeyDown(sf::Keyboard::Space))
+		if (Input::GetKeyDown(sf::Keyboard::Enter))
 		{
-			std::cout << "Space Down" << std::endl;
-		}
-
-		if (Input::GetKeyUp(sf::Keyboard::Space))
-		{
-			std::cout << "Space Up" << std::endl;
+			std::cout << std::endl;
 		}
 
 		inputSystem->EndInputFrame();
