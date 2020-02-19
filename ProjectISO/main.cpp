@@ -2,6 +2,7 @@
 #include "Input.h"
 
 #include <iostream>
+#include <cstdint>
 
 int main()
 {
@@ -46,6 +47,10 @@ int main()
 				inputSystem->SetMouseButtonUp(event.mouseButton.button);
 				break;
 			case sf::Event::MouseWheelScrolled:
+				if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) // Only supporting vertical scroll
+				{
+					inputSystem->SetVerticalScrollWheelDelta(event.mouseWheelScroll.delta);
+				}
 				break;
 			case sf::Event::TextEntered:
 				inputSystem->SetCharEntered(event.text.unicode);
@@ -58,11 +63,18 @@ int main()
 			}
 		}
 
-		auto mouse = Input::GetMousePosition();
+		auto mouse = Input::GetVerticalScrollWheelDelta();
 		
-		std::cout << "x " << mouse.x << "y " << mouse.y << std::endl;
-		
+		if (mouse > FLT_EPSILON)
+		{
+			std::cout << "scroll " << mouse << std::endl;
+		}
 
+		if (mouse < -FLT_EPSILON)
+		{
+			std::cout << "scroll " << mouse << std::endl;
+		}
+		
 		inputSystem->EndInputFrame();
 
 		window.clear();

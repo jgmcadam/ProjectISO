@@ -68,6 +68,11 @@ void Input::SetMousePosition(int x, int y)
 	m_mousePosition.y = y;
 }
 
+void Input::SetVerticalScrollWheelDelta(float mouseWheelDelta)
+{
+	m_mouseVerticalScrollWheelDelta = mouseWheelDelta;
+}
+
 bool Input::GetKeyUp(sf::Keyboard::Key keyCode)
 {
 	return m_instance->m_keyReleasedStates[keyCode];
@@ -114,6 +119,11 @@ sf::Vector2i Input::GetMousePosition()
 	return m_instance->m_mousePosition;
 }
 
+float Input::GetVerticalScrollWheelDelta()
+{
+	return m_instance->m_mouseVerticalScrollWheelDelta;
+}
+
 void Input::EndInputFrame()
 {
 	for (int i = 0; i < sf::Keyboard::KeyCount; i++)
@@ -137,4 +147,6 @@ void Input::EndInputFrame()
 	}
 
 	m_characterBuffer = _NOCHAR;
+
+	m_mouseVerticalScrollWheelDelta = 0.0f;
 }

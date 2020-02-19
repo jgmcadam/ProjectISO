@@ -18,6 +18,7 @@ public:
 	void SetMouseButtonUp(sf::Mouse::Button mouseButton);
 	void SetCharEntered(sf::Uint32 character);
 	void SetMousePosition(int x, int y);
+	void SetVerticalScrollWheelDelta(float mouseWheelDelta);
 
 	void EndInputFrame();
 
@@ -29,6 +30,7 @@ public:
 	static bool GetMouseButton(sf::Mouse::Button mouseButton);
 	static bool TryGetTypedASCIICharacter(char* character);
 	static sf::Vector2i GetMousePosition();
+	static float GetVerticalScrollWheelDelta();
 
 private:
 
@@ -45,5 +47,7 @@ private:
 	bool m_mouseStates[sf::Mouse::Button::ButtonCount];
 	bool m_mouseReleasedStates[sf::Mouse::Button::ButtonCount];
 	bool m_mousePressedStates[sf::Mouse::Button::ButtonCount];
+
+	float m_mouseVerticalScrollWheelDelta;
 
 };
