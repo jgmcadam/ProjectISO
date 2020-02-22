@@ -6,16 +6,16 @@
 int main()
 {
 	// Game and Framework Version
-	float version = 0.0f;
+	std::string version = "0.0";
 
 	// Init the log with the framework Version
-	LogUtils::InitDebug("PROJECT ISO STARTED version: " + std::to_string(version));
+	LogUtils::InitDebug("PROJECT ISO STARTED version: " + version);
 
 	// Create All the core systems 
 	Input* inputSystem = new Input();
 
 	// TODO: Create a window utilising the graphics settings system to load previous settings 
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(200, 200), "Project ISO - v" + version);
 
 	while (window.isOpen())
 	{
