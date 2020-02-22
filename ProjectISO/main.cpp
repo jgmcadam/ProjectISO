@@ -1,8 +1,16 @@
 #include <SFML/Graphics.hpp>
+
 #include "Input.h"
+#include "LogUtils.h"
 
 int main()
 {
+	// Game and Framework Version
+	float version = 0.0f;
+
+	// Init the log with the framework Version
+	LogUtils::InitDebug("PROJECT ISO STARTED version: " + std::to_string(version));
+
 	// Create All the core systems 
 	Input* inputSystem = new Input();
 

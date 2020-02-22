@@ -6,6 +6,8 @@ Input* Input::m_instance = nullptr;
 
 Input::Input()
 {
+	LogUtils::LogToDebug("Input System Created.");
+	LogUtils::LogToDebug("Input System Created.");
 	m_instance = this;
 }
 
