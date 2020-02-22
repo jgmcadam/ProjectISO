@@ -1,4 +1,4 @@
-#include "LogUtils.h"
+#include "DebugUtils.h"
 
 std::string const LogUtils::logFileLocation = "log.txt";
 

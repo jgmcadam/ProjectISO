@@ -27,7 +27,7 @@
     <ClCompile Include="Input.cpp">
       <Filter>Resource Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="LogUtils.cpp">
+    <ClCompile Include="DebugUtils.cpp">
       <Filter>Resource Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LogUtils.h">
+    <ClInclude Include="DebugUtils.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>

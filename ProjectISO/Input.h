@@ -4,7 +4,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
 
-#include "LogUtils.h"
+#include "DebugUtils.h"
 
 class Input final
 {
