@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Input.h"
-#include "LogUtils.h"
+#include "DebugUtils.h"
 
 int main()
 {
@@ -72,6 +72,7 @@ int main()
 
 		window.clear();
 		window.display();
+
 	}
 
 	delete inputSystem;
