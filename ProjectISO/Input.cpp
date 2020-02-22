@@ -1,6 +1,8 @@
 #include "Input.h"
 
+#if !defined _NOCHAR
 #define _NOCHAR -1
+#endif
 
 Input* Input::m_instance = nullptr;
 
