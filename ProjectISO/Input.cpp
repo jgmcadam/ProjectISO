@@ -6,6 +6,7 @@ Input* Input::m_instance = nullptr;
 
 Input::Input()
 {
+	SLOWASSERT(m_instance == nullptr);
 	m_instance = this;
 }
 
